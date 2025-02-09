@@ -15,6 +15,11 @@
 
 package com.richard.website.common.exception.base;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public abstract class DomainException extends RuntimeException {
 
     private final String code;
@@ -28,7 +33,4 @@ public abstract class DomainException extends RuntimeException {
         this.code = code;
     }
 
-    public String getCode() {
-        return code;
-    }
 }
