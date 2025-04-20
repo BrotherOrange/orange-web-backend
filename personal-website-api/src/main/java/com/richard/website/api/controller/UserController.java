@@ -17,12 +17,12 @@ package com.richard.website.api.controller;
 
 import com.richard.website.api.dto.request.UserRequest;
 import com.richard.website.api.dto.response.UserResponse;
-import com.richard.website.api.mapper.request.UserReqMapper;
-import com.richard.website.api.mapper.response.UserResMapper;
+import com.richard.website.api.mapstruct.request.UserReqMapper;
+import com.richard.website.api.mapstruct.response.UserResMapper;
 import com.richard.website.application.service.UserService;
 import com.richard.website.domain.model.entity.UserEntity;
+import jakarta.annotation.Resource;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,13 +32,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/user")
 public class UserController {
 
-    @Autowired
+    @Resource
     private UserService userService;
 
-    @Autowired
+    @Resource
     private UserReqMapper userReqMapper;
 
-    @Autowired
+    @Resource
     private UserResMapper userResMapper;
 
     @PostMapping("/register")

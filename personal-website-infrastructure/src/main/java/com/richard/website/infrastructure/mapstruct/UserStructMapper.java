@@ -17,10 +17,11 @@ package com.richard.website.infrastructure.mapstruct;
 
 import com.richard.website.domain.model.entity.UserEntity;
 import com.richard.website.infrastructure.po.UserPo;
+import org.mapstruct.Builder;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", builder = @Builder(disableBuilder = true))
 public interface UserStructMapper {
     UserStructMapper INSTANCE = Mappers.getMapper(UserStructMapper.class);
 

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.richard.website.infrastructure.dao.UserDAO">
+
+    <!-- 基础列 -->
+    <sql id="Base_Column_List">
+        id, created_at, updated_at, username, password, email, role,
+        nickname, gender, age, profile, status, avatar
+    </sql>
+
+    <!-- 基础表名 -->
+    <sql id="Table_Name">user</sql>
+
+    <!-- 基础查询 -->
+    <sql id="Base_Query">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM
+        <include refid="Table_Name"/>
+    </sql>
+
+    <!-- 插入用户 -->
+    <insert id="insert" parameterType="com.richard.website.infrastructure.po.UserPo"
+            useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO <include refid="Table_Name"/> (
+        username, password, email, role, nickname, gender,
+        age, profile, status, avatar, created_at, updated_at
+        ) VALUES (
+        #{username}, #{password}, #{email}, #{role}, #{nickname}, #{gender},
+        #{age}, #{profile}, #{status}, #{avatar}, #{createdAt}, #{updatedAt}
+        )
+    </insert>
+
+    <!-- 根据用户名查询 -->
+    <select id="findByUsername" resultType="com.richard.website.infrastructure.po.UserPo">
+        <include refid="Base_Query"/>
+        WHERE username = #{username}
+    </select>
+</mapper>

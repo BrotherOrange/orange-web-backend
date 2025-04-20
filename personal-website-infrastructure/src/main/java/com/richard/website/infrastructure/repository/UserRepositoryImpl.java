@@ -18,17 +18,17 @@ package com.richard.website.infrastructure.repository;
 import com.richard.website.domain.model.entity.UserEntity;
 import com.richard.website.domain.repository.UserRepository;
 import com.richard.website.infrastructure.dao.UserDAO;
-import com.richard.website.infrastructure.mapper.UserStructMapper;
+import com.richard.website.infrastructure.mapstruct.UserStructMapper;
 import com.richard.website.infrastructure.po.UserPo;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class UserRepositoryImpl implements UserRepository {
 
-    @Autowired
+    @Resource
     private UserDAO userDAO;
-    @Autowired
+    @Resource
     private UserStructMapper userStructMapper;
 
     @Override

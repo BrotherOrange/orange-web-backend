@@ -21,8 +21,9 @@ import com.richard.website.common.exception.UserDomainException;
 import com.richard.website.common.utils.PasswordUtil;
 import com.richard.website.domain.model.entity.UserEntity;
 import com.richard.website.domain.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 
@@ -30,12 +31,13 @@ import java.time.LocalDateTime;
 @Service
 public class UserService {
 
-    @Autowired
+    @Resource
     private PasswordUtil passwordUtil;
 
-    @Autowired
+    @Resource
     private UserRepository userRepository; // 添加仓储接口
 
+    @Transactional
     public UserEntity register(UserEntity user) {
         // 领域逻辑校验
         validateUserRegistration(user);
@@ -54,7 +56,7 @@ public class UserService {
         user.setCreatedAt(now);
         user.setUpdatedAt(now);
         userRepository.save(user);
-        return user;
+        return userRepository.findByUsername(user.getUsername());
     }
 
     public boolean authenticate(String username, String password) {
