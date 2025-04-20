@@ -20,6 +20,13 @@ import com.richard.website.domain.model.entity.UserEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
+/**
+ * 用户返回实体与用户信息实体映射转换类
+ *
+ * @Author Richard Zhang
+ * @Email richard.jih.zhang@gmail.com
+ * @Date 2025-04-20 22:40
+ */
 @Mapper(componentModel = "spring")
 public interface UserResMapper {
     UserResMapper INSTANCE = Mappers.getMapper(UserResMapper.class);

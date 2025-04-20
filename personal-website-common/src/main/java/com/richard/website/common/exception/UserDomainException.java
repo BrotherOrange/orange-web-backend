@@ -17,6 +17,13 @@ package com.richard.website.common.exception;
 
 import com.richard.website.common.exception.base.DomainException;
 
+/**
+ * 用户数据层异常封装类
+ *
+ * @Author Richard Zhang
+ * @Email richard.jih.zhang@gmail.com
+ * @Date 2025-04-20 22:43
+ */
 public class UserDomainException extends DomainException {
 
     public static final String USER_NOT_FOUND = "USER_NOT_FOUND";
@@ -27,16 +34,25 @@ public class UserDomainException extends DomainException {
         super(code, message);
     }
 
+    /**
+     * 用户查询失败
+     */
     public static UserDomainException userNotFound(String username) {
         return new UserDomainException(USER_NOT_FOUND,
                 String.format("User not found with username: %s", username));
     }
 
+    /**
+     * 用户名已存在
+     */
     public static UserDomainException usernameAlreadyExists(String username) {
         return new UserDomainException(USERNAME_ALREADY_EXISTS,
                 String.format("Username already exists: %s", username));
     }
 
+    /**
+     * 密码不合法
+     */
     public static UserDomainException invalidPassword() {
         return new UserDomainException(INVALID_PASSWORD, "Invalid password");
     }

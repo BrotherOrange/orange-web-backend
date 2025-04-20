@@ -21,6 +21,13 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
+/**
+ * 公共响应对象基座
+ *
+ * @Author Richard Zhang
+ * @Email richard.jih.zhang@gmail.com
+ * @Date 2025-01-21 22:10
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

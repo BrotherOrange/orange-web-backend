@@ -2,6 +2,13 @@ package com.richard.website.common.enums;
 
 import lombok.Getter;
 
+/**
+ * 用户状态枚举类
+ *
+ * @Author Richard Zhang
+ * @Email richard.jih.zhang@gmail.com
+ * @Date 2025-04-20 22:43
+ */
 @Getter
 public enum UserStatusEnum {
     ACTIVE("正常"),

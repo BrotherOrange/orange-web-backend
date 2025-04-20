@@ -20,6 +20,13 @@ import com.richard.website.infrastructure.po.TagPo;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
+/**
+ * 标签持久化实体与标签信息实体映射转换类
+ *
+ * @Author Richard Zhang
+ * @Email richard.jih.zhang@gmail.com
+ * @Date 2025-04-20 22:47
+ */
 @Mapper(componentModel = "spring")
 public interface TagStructMapper {
     TagStructMapper INSTANCE = Mappers.getMapper(TagStructMapper.class);

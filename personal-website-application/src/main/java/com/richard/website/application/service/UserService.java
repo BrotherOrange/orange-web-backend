@@ -19,6 +19,13 @@ import com.richard.website.domain.model.entity.UserEntity;
 
 import java.util.List;
 
+/**
+ * 用户Service接口类
+ *
+ * @Author Richard Zhang
+ * @Email richard.jih.zhang@gmail.com
+ * @Date 2025-04-20 22:42
+ */
 public interface UserService {
     /**
      * 注册新用户

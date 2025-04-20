@@ -21,13 +21,26 @@ import com.richard.website.domain.model.entity.UserEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
+/**
+ * 用户请求实体与用户信息实体映射转换类
+ *
+ * @Author Richard Zhang
+ * @Email richard.jih.zhang@gmail.com
+ * @Date 2025-04-20 22:38
+ */
 @Mapper(componentModel = "spring")
 public interface UserReqMapper {
     UserReqMapper INSTANCE = Mappers.getMapper(UserReqMapper.class);
 
+    /**
+     * 用户注册相关映射转换
+     */
     UserRegisterRequest toUserRegisterRequest(UserEntity userEntity);
     UserEntity toUserEntity(UserRegisterRequest userRequest);
 
+    /**
+     * 用户查询相关映射转换
+     */
     UserQueryRequest toUserQueryRequest(UserEntity userEntity);
     UserEntity toUserEntity(UserQueryRequest userRequest);
 }

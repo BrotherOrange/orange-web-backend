@@ -20,6 +20,13 @@ import com.richard.website.infrastructure.po.ArchivePo;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
+/**
+ * 归档持久化实体与归档信息实体映射转换类
+ *
+ * @Author Richard Zhang
+ * @Email richard.jih.zhang@gmail.com
+ * @Date 2025-04-20 22:47
+ */
 @Mapper(componentModel = "spring")
 public interface ArchiveStructMapper {
     ArchiveStructMapper INSTANCE = Mappers.getMapper(ArchiveStructMapper.class);

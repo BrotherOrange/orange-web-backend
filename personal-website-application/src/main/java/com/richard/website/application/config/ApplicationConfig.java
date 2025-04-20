@@ -21,6 +21,13 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
+/**
+ * 应用模块配置类
+ *
+ * @Author Richard Zhang
+ * @Email richard.jih.zhang@gmail.com
+ * @Date 2025-04-20 22:42
+ */
 @Configuration
 @ComponentScan("com.richard.website.application")
 @Import({DomainConfig.class, InfrastructureConfig.class})

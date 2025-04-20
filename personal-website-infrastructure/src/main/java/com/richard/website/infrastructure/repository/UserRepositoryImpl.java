@@ -26,6 +26,13 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * 用户数据存储实现类
+ *
+ * @Author Richard Zhang
+ * @Email richard.jih.zhang@gmail.com
+ * @Date 2025-04-20 22:47
+ */
 @Repository
 public class UserRepositoryImpl implements UserRepository {
 

@@ -21,6 +21,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Import;
 
+/**
+ * 个人网站系统启动类
+ *
+ * @Author Richard Zhang
+ * @Email richard.jih.zhang@gmail.com
+ * @Date 2025-01-21 22:10
+ */
 @SpringBootApplication
 @Import(ApiConfig.class)
 @MapperScan("com.richard.website.infrastructure.dao")

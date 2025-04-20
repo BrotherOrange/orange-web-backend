@@ -18,15 +18,28 @@ package com.richard.website.common.utils;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
+/**
+ * 密码处理工具类
+ *
+ * @Author Richard Zhang
+ * @Email richard.jih.zhang@gmail.com
+ * @Date 2025-04-20 22:44
+ */
 @Component
 public class PasswordUtil {
 
     private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
+    /**
+     * 密码加密
+     */
     public String encode(String password) {
         return encoder.encode(password);
     }
 
+    /**
+     * 密码匹配判断
+     */
     public boolean matches(String rawPassword, String encodedPassword) {
         return encoder.matches(rawPassword, encodedPassword);
     }

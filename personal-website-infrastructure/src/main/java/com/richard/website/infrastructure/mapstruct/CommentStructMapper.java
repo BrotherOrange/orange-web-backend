@@ -20,6 +20,13 @@ import com.richard.website.infrastructure.po.CommentPo;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
+/**
+ * 评论持久化实体与评论信息实体映射转换类
+ *
+ * @Author Richard Zhang
+ * @Email richard.jih.zhang@gmail.com
+ * @Date 2025-04-20 22:47
+ */
 @Mapper(componentModel = "spring")
 public interface CommentStructMapper {
     CommentStructMapper INSTANCE = Mappers.getMapper(CommentStructMapper.class);

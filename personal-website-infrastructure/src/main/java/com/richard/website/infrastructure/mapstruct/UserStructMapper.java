@@ -21,6 +21,13 @@ import org.mapstruct.Builder;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
+/**
+ * 用户持久化实体与用户信息实体映射转换类
+ *
+ * @Author Richard Zhang
+ * @Email richard.jih.zhang@gmail.com
+ * @Date 2025-04-20 22:47
+ */
 @Mapper(componentModel = "spring", builder = @Builder(disableBuilder = true))
 public interface UserStructMapper {
     UserStructMapper INSTANCE = Mappers.getMapper(UserStructMapper.class);

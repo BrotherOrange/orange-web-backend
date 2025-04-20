@@ -30,6 +30,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * 用户Controller
+ *
+ * @Author Richard Zhang
+ * @Email richard.jih.zhang@gmail.com
+ * @Date 2025-04-20 22:38
+ */
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -56,7 +63,6 @@ public class UserController {
     /**
      * 通过ID查询具体用户信息
      */
-
     @GetMapping("/{id}")
     public UserResponse getUserById(@PathVariable @Positive Long id) {
         UserEntity userEntity = userService.getUserById(id);

@@ -18,6 +18,13 @@ package com.richard.website.common.exception.base;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * 数据层基础异常封装类
+ *
+ * @Author Richard Zhang
+ * @Email richard.jih.zhang@gmail.com
+ * @Date 2025-04-20 22:43
+ */
 @Getter
 @Setter
 public abstract class DomainException extends RuntimeException {

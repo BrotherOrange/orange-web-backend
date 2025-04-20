@@ -29,7 +29,13 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
 
-
+/**
+ * 用户Service实现类
+ *
+ * @Author Richard Zhang
+ * @Email richard.jih.zhang@gmail.com
+ * @Date 2025-04-20 22:42
+ */
 @Service
 public class UserServiceImpl implements UserService {
 

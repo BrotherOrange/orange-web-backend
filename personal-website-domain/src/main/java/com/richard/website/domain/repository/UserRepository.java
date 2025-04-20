@@ -19,10 +19,32 @@ import com.richard.website.domain.model.entity.UserEntity;
 
 import java.util.List;
 
+/**
+ * 用户数据存储接口类
+ *
+ * @Author Richard Zhang
+ * @Email richard.jih.zhang@gmail.com
+ * @Date 2025-04-20 22:46
+ */
 public interface UserRepository {
 
+    /**
+     * 保存新用户
+     */
     void save(UserEntity user);
+
+    /**
+     * 通过用户ID查询用户
+     */
     UserEntity findById(Long id);
+
+    /**
+     * 通过用户名查询用户
+     */
     UserEntity findByUsername(String username);
+
+    /**
+     * 通过用户信息查询用户集合
+     */
     List<UserEntity> findByAttributes(UserEntity user);
 }
