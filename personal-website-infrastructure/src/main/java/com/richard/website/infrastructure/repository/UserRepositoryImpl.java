@@ -15,6 +15,8 @@
 
 package com.richard.website.infrastructure.repository;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.richard.website.domain.model.entity.UserEntity;
 import com.richard.website.domain.repository.UserRepository;
 import com.richard.website.infrastructure.dao.UserDAO;
@@ -48,19 +50,43 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public UserEntity findById(Long id) {
-        UserPo userPO = userDAO.findById(id);
+        UserPo userPO = userDAO.selectById(id);
         return userStructMapper.toUserEntity(userPO);
     }
 
     @Override
     public UserEntity findByUsername(String username) {
-        UserPo userPO = userDAO.findByUsername(username);
+        UserPo userPO = userDAO.selectOne(Wrappers.<UserPo>lambdaQuery().eq(UserPo::getUsername, username));
         return userStructMapper.toUserEntity(userPO);
     }
 
     @Override
     public List<UserEntity> findByAttributes(UserEntity user) {
-        List<UserPo> userPos = userDAO.findByAttributes(user);
+        // 创建 LambdaQueryWrapper
+        LambdaQueryWrapper<UserPo> wrapper = Wrappers.lambdaQuery(UserPo.class);
+
+        // 动态添加查询条件
+        if (user.getUsername() != null && !user.getUsername().isEmpty()) {
+            wrapper.eq(UserPo::getUsername, user.getUsername());
+        }
+        if (user.getEmail() != null && !user.getEmail().isEmpty()) {
+            wrapper.eq(UserPo::getEmail, user.getEmail());
+        }
+        if (user.getNickname() != null && !user.getNickname().isEmpty()) {
+            wrapper.eq(UserPo::getNickname, user.getNickname());
+        }
+        if (user.getGender() != null && !user.getGender().isEmpty()) {
+            wrapper.eq(UserPo::getGender, user.getGender());
+        }
+        if (user.getAge() != null) {
+            wrapper.eq(UserPo::getAge, user.getAge());
+        }
+        if (user.getProfile() != null && !user.getProfile().isEmpty()) {
+            wrapper.eq(UserPo::getProfile, user.getProfile());
+        }
+
+        // 执行查询
+        List<UserPo> userPos = userDAO.selectList(wrapper);
         return userPos.stream()
                 .map(userStructMapper::toUserEntity)
                 .collect(Collectors.toList());

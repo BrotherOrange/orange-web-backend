@@ -15,11 +15,9 @@
 
 package com.richard.website.infrastructure.dao;
 
-import com.richard.website.domain.model.entity.UserEntity;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.richard.website.infrastructure.po.UserPo;
 import org.apache.ibatis.annotations.Mapper;
-
-import java.util.List;
 
 /**
  * 用户数据库操作接口
@@ -29,24 +27,5 @@ import java.util.List;
  * @Date 2025-04-20 22:46
  */
 @Mapper
-public interface UserDAO {
-    /**
-     * 插入新用户
-     */
-    void insert(UserPo userPo);
-
-    /**
-     * 通过用户ID查询用户
-     */
-    UserPo findById(Long id);
-
-    /**
-     * 通过用户名查询用户
-     */
-    UserPo findByUsername(String username);
-
-    /**
-     * 通过用户信息查询用户集合
-     */
-    List<UserPo> findByAttributes(UserEntity queryRequest);
+public interface UserDAO extends BaseMapper<UserPo> {
 }

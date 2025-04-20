@@ -10,7 +10,7 @@ spring:
     password: ${DB_PASSWORD}
 
 
-mybatis:
+mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true  # 开启驼峰命名转换
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl  # 显示SQL日志

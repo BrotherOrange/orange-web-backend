@@ -15,6 +15,9 @@
 
 package com.richard.website.infrastructure.po;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.richard.website.common.enums.UserRoleEnum;
 import com.richard.website.common.enums.UserStatusEnum;
 import lombok.Data;
@@ -29,11 +32,13 @@ import java.time.LocalDateTime;
  * @Date 2025-01-21 22:10
  */
 @Data
+@TableName("user")
 public class UserPo {
 
     /**
      * id
      */
+    @TableId(type = IdType.AUTO)
     private Long id;
 
     /**
