@@ -16,16 +16,11 @@
 package com.richard.website.infrastructure.config;
 
 import com.richard.website.common.config.CommonConfig;
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 @Configuration
-@MapperScan({
-        "com.richard.website.infrastructure.dao",
-        "com.richard.website.infrastructure.mapper"
-})
 @ComponentScan("com.richard.website.infrastructure")
 @Import(CommonConfig.class)
 public class InfrastructureConfig {

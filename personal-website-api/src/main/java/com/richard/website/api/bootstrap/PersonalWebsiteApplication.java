@@ -16,12 +16,14 @@
 package com.richard.website.api.bootstrap;
 
 import com.richard.website.api.config.ApiConfig;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Import;
 
 @SpringBootApplication
 @Import(ApiConfig.class)
+@MapperScan("com.richard.website.infrastructure.dao")
 public class PersonalWebsiteApplication {
 
     public static void main(String[] args) {
