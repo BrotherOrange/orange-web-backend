@@ -31,9 +31,41 @@
         )
     </insert>
 
+    <!-- 根据ID查询 -->
+    <select id="findById" resultType="com.richard.website.infrastructure.po.UserPo">
+        <include refid="Base_Query"/>
+        WHERE id = #{id}
+    </select>
+
     <!-- 根据用户名查询 -->
     <select id="findByUsername" resultType="com.richard.website.infrastructure.po.UserPo">
         <include refid="Base_Query"/>
         WHERE username = #{username}
+    </select>
+
+    <!-- 根据任意属性查询 -->
+    <select id="findByAttributes" parameterType="com.richard.website.infrastructure.po.UserPo"
+            resultType="com.richard.website.infrastructure.po.UserPo">
+        <include refid="Base_Query"/>
+        <where>
+            <if test="username != null and username != ''">
+                AND username = #{username}
+            </if>
+            <if test="email != null and email != ''">
+                AND email = #{email}
+            </if>
+            <if test="nickname != null and nickname != ''">
+                AND nickname = #{nickname}
+            </if>
+            <if test="gender != null and gender != ''">
+                AND gender = #{gender}
+            </if>
+            <if test="age != null">
+                AND age = #{age}
+            </if>
+            <if test="profile != null and profile != ''">
+                AND profile = #{profile}
+            </if>
+        </where>
     </select>
 </mapper>

@@ -15,25 +15,27 @@
 
 package com.richard.website.api.controller;
 
-import com.richard.website.api.dto.request.UserRequest;
+import com.richard.website.api.dto.request.UserQueryRequest;
+import com.richard.website.api.dto.request.UserRegisterRequest;
 import com.richard.website.api.dto.response.UserResponse;
 import com.richard.website.api.mapstruct.request.UserReqMapper;
 import com.richard.website.api.mapstruct.response.UserResMapper;
-import com.richard.website.application.service.UserService;
+import com.richard.website.application.service.impl.UserServiceImpl;
 import com.richard.website.domain.model.entity.UserEntity;
 import jakarta.annotation.Resource;
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import jakarta.validation.constraints.Positive;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
 
     @Resource
-    private UserService userService;
+    private UserServiceImpl userService;
 
     @Resource
     private UserReqMapper userReqMapper;
@@ -41,10 +43,35 @@ public class UserController {
     @Resource
     private UserResMapper userResMapper;
 
+    /**
+     * 注册新用户
+     */
     @PostMapping("/register")
-    public UserResponse register(@RequestBody @Valid UserRequest userRequest) {
-        UserEntity userEntity = userReqMapper.toUserEntity(userRequest);
+    public UserResponse register(@RequestBody @Valid UserRegisterRequest userRegisterRequest) {
+        UserEntity userEntity = userReqMapper.toUserEntity(userRegisterRequest);
         UserEntity registeredUser = userService.register(userEntity);
         return userResMapper.toUserResponse(registeredUser);
+    }
+
+    /**
+     * 通过ID查询具体用户信息
+     */
+
+    @GetMapping("/{id}")
+    public UserResponse getUserById(@PathVariable @Positive Long id) {
+        UserEntity userEntity = userService.getUserById(id);
+        return userResMapper.toUserResponse(userEntity);
+    }
+
+    /**
+     * 通过属性集合查询用户信息
+     */
+    @GetMapping
+    public List<UserResponse> queryUsers(@Valid UserQueryRequest userQueryRequest) {
+        UserEntity userEntity = userReqMapper.toUserEntity(userQueryRequest);
+        List<UserEntity> users = userService.getUserByAttributes(userEntity);
+        return users.stream()
+                .map(userResMapper::toUserResponse)
+                .collect(Collectors.toList());
     }
 }

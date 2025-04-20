@@ -23,6 +23,9 @@ import com.richard.website.infrastructure.po.UserPo;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Repository
 public class UserRepositoryImpl implements UserRepository {
 
@@ -37,8 +40,22 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
+    public UserEntity findById(Long id) {
+        UserPo userPO = userDAO.findById(id);
+        return userStructMapper.toUserEntity(userPO);
+    }
+
+    @Override
     public UserEntity findByUsername(String username) {
         UserPo userPO = userDAO.findByUsername(username);
         return userStructMapper.toUserEntity(userPO);
+    }
+
+    @Override
+    public List<UserEntity> findByAttributes(UserEntity user) {
+        List<UserPo> userPos = userDAO.findByAttributes(user);
+        return userPos.stream()
+                .map(userStructMapper::toUserEntity)
+                .collect(Collectors.toList());
     }
 }

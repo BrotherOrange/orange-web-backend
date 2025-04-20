@@ -15,11 +15,16 @@
 
 package com.richard.website.infrastructure.dao;
 
+import com.richard.website.domain.model.entity.UserEntity;
 import com.richard.website.infrastructure.po.UserPo;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 @Mapper
 public interface UserDAO {
     void insert(UserPo userPo);
+    UserPo findById(Long id);
     UserPo findByUsername(String username);
+    List<UserPo> findByAttributes(UserEntity queryRequest);
 }

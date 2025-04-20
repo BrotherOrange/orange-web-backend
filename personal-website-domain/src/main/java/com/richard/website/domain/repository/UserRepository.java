@@ -17,8 +17,12 @@ package com.richard.website.domain.repository;
 
 import com.richard.website.domain.model.entity.UserEntity;
 
+import java.util.List;
+
 public interface UserRepository {
 
     void save(UserEntity user);
+    UserEntity findById(Long id);
     UserEntity findByUsername(String username);
+    List<UserEntity> findByAttributes(UserEntity user);
 }

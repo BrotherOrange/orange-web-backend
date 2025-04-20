@@ -15,59 +15,25 @@
 
 package com.richard.website.application.service;
 
-import com.richard.website.common.enums.UserRoleEnum;
-import com.richard.website.common.enums.UserStatusEnum;
-import com.richard.website.common.exception.UserDomainException;
-import com.richard.website.common.utils.PasswordUtil;
 import com.richard.website.domain.model.entity.UserEntity;
-import com.richard.website.domain.repository.UserRepository;
-import jakarta.annotation.Resource;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
+import java.util.List;
+
+public interface UserService {
+    /**
+     * 注册新用户
+     */
+    UserEntity register(UserEntity user);
+
+    /**
+     * 通过ID查询用户信息
+     */
+    UserEntity getUserById(Long id);
+
+    /**
+     * 通过属性集合查询用户信息
+     */
+    List<UserEntity> getUserByAttributes(UserEntity user);
 
 
-@Service
-public class UserService {
-
-    @Resource
-    private PasswordUtil passwordUtil;
-
-    @Resource
-    private UserRepository userRepository; // 添加仓储接口
-
-    @Transactional
-    public UserEntity register(UserEntity user) {
-        // 领域逻辑校验
-        validateUserRegistration(user);
-
-        // 密码加密
-        String password = user.getPassword();
-        String encodedPassword = passwordUtil.encode(password);
-        user.setPassword(encodedPassword);
-
-        // 设置默认值
-        user.setRole(UserRoleEnum.NORMAL);
-        user.setStatus(UserStatusEnum.ACTIVE);
-
-        // 设置基础字段
-        LocalDateTime now = LocalDateTime.now();
-        user.setCreatedAt(now);
-        user.setUpdatedAt(now);
-        userRepository.save(user);
-        return userRepository.findByUsername(user.getUsername());
-    }
-
-    public boolean authenticate(String username, String password) {
-        UserEntity user = userRepository.findByUsername(username);
-        return user != null && passwordUtil.matches(password, user.getPassword());
-    }
-
-    private void validateUserRegistration(UserEntity user) {
-        // 用户名唯一性检查
-        if (userRepository.findByUsername(user.getUsername()) != null) {
-            throw UserDomainException.usernameAlreadyExists(user.getUsername());
-        }
-    }
 }

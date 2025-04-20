@@ -15,7 +15,8 @@
 
 package com.richard.website.api.mapstruct.request;
 
-import com.richard.website.api.dto.request.UserRequest;
+import com.richard.website.api.dto.request.UserQueryRequest;
+import com.richard.website.api.dto.request.UserRegisterRequest;
 import com.richard.website.domain.model.entity.UserEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
@@ -24,6 +25,9 @@ import org.mapstruct.factory.Mappers;
 public interface UserReqMapper {
     UserReqMapper INSTANCE = Mappers.getMapper(UserReqMapper.class);
 
-    UserRequest toUserRequest(UserEntity userEntity);
-    UserEntity toUserEntity(UserRequest userRequest);
+    UserRegisterRequest toUserRegisterRequest(UserEntity userEntity);
+    UserEntity toUserEntity(UserRegisterRequest userRequest);
+
+    UserQueryRequest toUserQueryRequest(UserEntity userEntity);
+    UserEntity toUserEntity(UserQueryRequest userRequest);
 }
