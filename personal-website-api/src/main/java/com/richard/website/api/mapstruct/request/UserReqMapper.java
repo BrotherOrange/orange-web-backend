@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package com.richard.website.api.mapper.request;
+package com.richard.website.api.mapstruct.request;
 
 import com.richard.website.api.dto.request.UserRequest;
 import com.richard.website.domain.model.entity.UserEntity;

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package com.richard.website.infrastructure.mapper;
+package com.richard.website.infrastructure.mapstruct;
 
 import com.richard.website.domain.model.entity.UserEntity;
 import com.richard.website.infrastructure.po.UserPo;

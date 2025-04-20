@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 
-package com.richard.website.infrastructure.mapper;
+package com.richard.website.infrastructure.mapstruct;
 
-import com.richard.website.domain.model.entity.TagEntity;
-import com.richard.website.infrastructure.po.TagPo;
+import com.richard.website.domain.model.entity.CommentEntity;
+import com.richard.website.infrastructure.po.CommentPo;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
 @Mapper(componentModel = "spring")
-public interface TagStructMapper {
-    TagStructMapper INSTANCE = Mappers.getMapper(TagStructMapper.class);
+public interface CommentStructMapper {
+    CommentStructMapper INSTANCE = Mappers.getMapper(CommentStructMapper.class);
 
-    TagPo toTagPo(String tag);
-    TagEntity toTagEntity(TagPo tagPo);
+    CommentPo toCommentPo(CommentEntity commentEntity);
+    CommentEntity toCommentEntity(CommentPo commentPO);
 }

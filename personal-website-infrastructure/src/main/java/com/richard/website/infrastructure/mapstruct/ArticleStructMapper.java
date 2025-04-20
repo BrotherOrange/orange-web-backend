@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 
-package com.richard.website.infrastructure.mapper;
+package com.richard.website.infrastructure.mapstruct;
 
-import com.richard.website.domain.model.entity.ArchiveEntity;
-import com.richard.website.infrastructure.po.ArchivePo;
+import com.richard.website.domain.model.entity.ArticleEntity;
+import com.richard.website.infrastructure.po.ArticlePo;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
 @Mapper(componentModel = "spring")
-public interface ArchiveStructMapper {
-    ArchiveStructMapper INSTANCE = Mappers.getMapper(ArchiveStructMapper.class);
+public interface ArticleStructMapper {
+    ArticleStructMapper INSTANCE = Mappers.getMapper(ArticleStructMapper.class);
 
-    ArchivePo toArchivePo(ArchiveEntity archiveEntity);
-    ArchiveEntity toArchiveEntity(ArchivePo archivePo);
+    ArticlePo toArticlePo(ArticlePo articlePo);
+    ArticleEntity toArticleEntity(ArticleEntity articleEntity);
 }

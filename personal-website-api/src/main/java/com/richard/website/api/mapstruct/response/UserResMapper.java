@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package com.richard.website.api.mapper.response;
+package com.richard.website.api.mapstruct.response;
 
 import com.richard.website.api.dto.response.UserResponse;
 import com.richard.website.domain.model.entity.UserEntity;
